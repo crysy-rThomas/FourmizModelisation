@@ -54,6 +54,9 @@ public class CurveTracer extends JFrame {
     private void btnClearListener( ActionEvent event ) {
        curveCanvas.Clear();
     }
+
+
+
     public static void main(String[] args) throws Exception {
         UIManager.setLookAndFeel( new NimbusLookAndFeel() );
         CurveTracer window = new CurveTracer();

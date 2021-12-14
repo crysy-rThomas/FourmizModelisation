@@ -124,7 +124,7 @@ public class CurveCanvas extends JComponent {
 
             for (double lx = -echelle; lx <= echelle + step; lx += step) {
                 int x = xToPixel(lx);
-                int y = yToPixel(spline.interpolate(lx));
+                int y = yToPixel(spline.compute(lx));
                 graphics.drawLine(x, y, oldX, oldY);
 
                 oldX = x;

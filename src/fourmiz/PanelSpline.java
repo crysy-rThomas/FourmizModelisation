@@ -13,8 +13,8 @@ import java.util.List;
  * @author crysy
  */
 public class PanelSpline extends javax.swing.JFrame {
-    private ArrayList<Double> x = new ArrayList<>();
-    private ArrayList<Double> y = new ArrayList<>();
+    private double[] x ;
+    private double[] y ;
     private static CurveCanvas curveCanvas;
     /** Creates new form PanelSpline */
     public PanelSpline(CurveCanvas curveCanvas) {
@@ -116,9 +116,8 @@ public class PanelSpline extends javax.swing.JFrame {
         double x1 = Double.parseDouble(jTextField1.getText());
         double y1 = Double.parseDouble(jTextField2.getText());
         //add
-       
-        x.add(x1);
-        y.add(y1);
+       x[x.length+1] = x1;
+       y[y.length+1] = y1;
        
         jTextField1.setText("");
         jTextField2.setText("");
@@ -127,8 +126,7 @@ public class PanelSpline extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         //trace
-        SplineInterpolateur spline;
-        spline = SplineInterpolateur.createMonotoneCubicSpline(x, y);
+        SplineInterpolateur spline = new SplineInterpolateur(x, y);
         curveCanvas.setFunction(spline);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

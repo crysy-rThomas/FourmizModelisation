@@ -13,6 +13,7 @@ public class CurveCanvas extends JComponent {
 
     private ArrayList <CalculeAffine> function ;
     private PolynomeInterpolateur pi;
+    private SplineInterpolateur spline;
     private Graphics2D graphics;
     private final double echelle = 5;
     
@@ -57,19 +58,19 @@ public class CurveCanvas extends JComponent {
         
        
         
-        if(pi == null)
-        {
-         //Dessine les affines
-         drawCurveAffine();   
-        }
-        else
-        {
+        if (pi != null) {
+
             //dessine Lagrange
-        drawCurveLagrange(); 
+            drawCurveLagrange();
+        } else if (spline != null) {
+            drawCurveSpline();
+        } else {
+            //Dessine les affines
+            drawCurveAffine();
         }
+
         
-        
-       
+       //-1 / -1.5 -- -1.5 / 0 -- 0 / 0.25 -- 0.5 / 0 -- 1 / 0
         
         
         
@@ -112,6 +113,24 @@ public class CurveCanvas extends JComponent {
                 oldY = y;
             }  
     }
+        
+        // --- Draw curve Spline ---
+        public void drawCurveSpline() {       
+            double step = 0.1;
+            graphics.setColor(new Color(255, 0, 255));
+            //oskour
+            int oldX = xToPixel(-echelle);
+            int oldY = yToPixel(echelle);
+
+            for (double lx = -echelle; lx <= echelle + step; lx += step) {
+                int x = xToPixel(lx);
+                int y = yToPixel(spline.interpolate(lx));
+                graphics.drawLine(x, y, oldX, oldY);
+
+                oldX = x;
+                oldY = y;
+            }  
+    }
 
     private int xToPixel( double x ) {
         return (int)( getWidth() * (x + echelle)/(2*echelle) );
@@ -134,6 +153,11 @@ public class CurveCanvas extends JComponent {
     public void setFunction(PolynomeInterpolateur pi)
     {
         this.pi = pi;
+        repaint();
+    }
+    public void setFunction(SplineInterpolateur spline)
+    {
+        this.spline = spline;
         repaint();
     }
     

@@ -15,6 +15,7 @@ public class CurveTracer extends JFrame {
 
     private JButton btnAffine = new JButton( "Affine" );
     private JButton btnLagrange = new JButton( "Lagrange" );
+    private JButton btnSpline = new JButton( "Spline" );
     private JButton btnClear = new JButton( "Clear" );
     private CurveCanvas curveCanvas = new CurveCanvas();
     
@@ -30,6 +31,8 @@ public class CurveTracer extends JFrame {
         pnlTop.add( btnAffine );
         btnLagrange.addActionListener( this::btnLagrangeListener );
         pnlTop.add( btnLagrange );
+        btnSpline.addActionListener( this::btnSplineListener );
+        pnlTop.add( btnSpline );
         btnClear.addActionListener( this::btnClearListener );
         pnlTop.add( btnClear );
         contentPane.add( pnlTop, BorderLayout.NORTH );
@@ -42,6 +45,11 @@ public class CurveTracer extends JFrame {
     
     private void btnAffineListener( ActionEvent event ) {
        AffinePanel a = new AffinePanel(curveCanvas);
+       a.setVisible(true); 
+    
+    }
+        private void btnSplineListener( ActionEvent event ) {
+       PanelSpline a = new PanelSpline(curveCanvas);
        a.setVisible(true); 
     
     }

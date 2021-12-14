@@ -14,6 +14,17 @@ public class SplineInterpolateur {
      private SplineInterpolator spline = new SplineInterpolator();
      private PolynomialSplineFunction PSF ;
      
+     public double[] getX()
+     {
+         return x;
+     }
+     
+     public double[] getY()
+     {
+         return y;
+     }
+     
+     
      public SplineInterpolateur(double[] x , double[] y)
      {
          this.x = x;

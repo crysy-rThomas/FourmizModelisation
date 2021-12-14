@@ -115,23 +115,24 @@ public class CurveCanvas extends JComponent {
     }
         
         // --- Draw curve Spline ---
-        public void drawCurveSpline() {       
+        public void drawCurveSpline() {  
+            for(int i = 1; i<spline.getX().length;i++)
+            {
             double step = 0.1;
             graphics.setColor(new Color(255, 0, 255));
             //oskour
-            int oldX = xToPixel(-echelle);
-            int oldY = yToPixel(echelle);
-
-            
+            int oldX = xToPixel(spline.getX()[i]);
+            int oldY = yToPixel(spline.getY()[i]);          
             //probleme de tracage echelle > intervalle du premier X-Y je pense qu'il faut tracer entre les intervalles
-            for (double lx = -echelle; lx <= echelle; lx += step) {
+            for (double lx = spline.getX()[i-1]; lx <= spline.getX()[i]; lx += step) {
                 int x = xToPixel(lx);
                 int y = yToPixel(spline.compute(lx));
                 graphics.drawLine(x, y, oldX, oldY);
 
                 oldX = x;
                 oldY = y;
-            }  
+            }
+        }    
     }
 
     private int xToPixel( double x ) {

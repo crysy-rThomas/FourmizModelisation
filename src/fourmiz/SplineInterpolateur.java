@@ -29,6 +29,7 @@ public class SplineInterpolateur {
      
      public double compute(double x)
      {
+         
          return PSF.value(x);
      }
      

@@ -122,7 +122,9 @@ public class CurveCanvas extends JComponent {
             int oldX = xToPixel(-echelle);
             int oldY = yToPixel(echelle);
 
-            for (double lx = -echelle; lx <= echelle + step; lx += step) {
+            
+            //probleme de tracage echelle > intervalle du premier X-Y je pense qu'il faut tracer entre les intervalles
+            for (double lx = -echelle; lx <= echelle; lx += step) {
                 int x = xToPixel(lx);
                 int y = yToPixel(spline.compute(lx));
                 graphics.drawLine(x, y, oldX, oldY);

@@ -13,13 +13,14 @@ import java.util.List;
  * @author crysy
  */
 public class PanelSpline extends javax.swing.JFrame {
-    private double[] x ;
-    private double[] y ;
+    private ArrayList<Double> x = new ArrayList<>();
+    private ArrayList<Double> y = new ArrayList<>();
     private static CurveCanvas curveCanvas;
     /** Creates new form PanelSpline */
     public PanelSpline(CurveCanvas curveCanvas) {
         initComponents();
         this.curveCanvas = curveCanvas;
+        
     }
 
     /** This method is called from within the constructor to
@@ -116,8 +117,8 @@ public class PanelSpline extends javax.swing.JFrame {
         double x1 = Double.parseDouble(jTextField1.getText());
         double y1 = Double.parseDouble(jTextField2.getText());
         //add
-       x[x.length+1] = x1;
-       y[y.length+1] = y1;
+       x.add(x1);
+       y.add(y1);
        
         jTextField1.setText("");
         jTextField2.setText("");
@@ -126,7 +127,18 @@ public class PanelSpline extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         //trace
-        SplineInterpolateur spline = new SplineInterpolateur(x, y);
+        double[] xTab = new double[x.size()];
+        double[] yTab = new double[y.size()];
+        for(int i = 0; i<xTab.length;i++)
+        {
+            xTab[i] = x.get(i);
+            yTab[i] = y.get(i);
+        }
+        
+        
+        
+        SplineInterpolateur spline = new SplineInterpolateur(xTab, yTab);
+        spline.interpolateSpline();
         curveCanvas.setFunction(spline);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

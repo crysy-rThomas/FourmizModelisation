@@ -55,12 +55,21 @@ public class CurveCanvas extends JComponent {
         graphics.drawString( String.valueOf(echelle), (int)(getWidth()*0.96), (int)(getHeight()*0.54));
         
         
-        //Dessine les affines
-        //drawCurveAffine();
+       
+        
+        if(pi == null)
+        {
+         //Dessine les affines
+         drawCurveAffine();   
+        }
+        else
+        {
+            //dessine Lagrange
+        drawCurveLagrange(); 
+        }
         
         
-        //dessine Lagrange
-        drawCurveLagrange();
+       
         
         
         
@@ -87,8 +96,7 @@ public class CurveCanvas extends JComponent {
       }
         
                 // --- Draw curve Lagrange ---
-        public void drawCurveLagrange() {
-        for (int i = 0; i < function.size(); i++) {
+        public void drawCurveLagrange() {       
             double step = 0.1;
             graphics.setColor(new Color(255, 0, 255));
             //oskour
@@ -102,8 +110,7 @@ public class CurveCanvas extends JComponent {
 
                 oldX = x;
                 oldY = y;
-            }
-        }
+            }  
     }
 
     private int xToPixel( double x ) {

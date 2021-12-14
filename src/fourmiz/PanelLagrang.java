@@ -113,8 +113,8 @@ public class PanelLagrang extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int x1 = Integer.parseInt(jTextField1.getText());
-        int y1 = Integer.parseInt(jTextField2.getText());
+        double x1 = Double.parseDouble(jTextField1.getText());
+        double y1 = Double.parseDouble(jTextField2.getText());
         //add
         Point pt = new Point(x1,y1);
    

@@ -21,7 +21,7 @@ public class PolynomeInterpolateur implements CurveFunction {
     }
     
     private double lagrange(int i, double x) {
-        double res = 0;
+        double res = 1;
         for(int j=0;j<points.size();j++) {
             if(j!= i) {
                 res *= (x-points.get(j).getX())/(points.get(i).getX()-points.get(j).getX());

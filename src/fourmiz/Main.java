@@ -1,109 +1,90 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fourmiz;
 
+
+
+
+
 import java.awt.*;
-import java.util.*;
-import java.awt.geom.*;
-
-public class Main {
-    public static GeneralPath drawBezierCurve(AffineTransform affine,
-            Vector<Point2D.Double> gPathPoints, Graphics g) {
-        if (affine == null) {
-            affine = new AffineTransform();
-            affine.setToIdentity();/*from  w  w  w.  j  ava 2  s  . co  m*/
-        }
-        boolean drawPath = true;
-        if (g == null)
-            drawPath = false;
-        int pixelSize = 1;
-        Point2D.Double pt;
-        if (gPathPoints.size() == 0)
-            return null;
-        // if (gPathPoints.size() % 2 == 0) return  null;
-        // System.out.println("Path Points Size: "+gPathPoints.size() + 
-        // " Mod2: "+gPathPoints.size() % 2 );
-        Point2D.Double[] points = gPathPoints
-                .toArray(new Point2D.Double[0]);
-        Graphics2D g2 = null;
-        AffineTransform origAffine = null;
-        if (drawPath) {
-            g2 = (Graphics2D) g;
-            origAffine = g2.getTransform();
-        }
-        GeneralPath gPath = new GeneralPath();
-        gPath.moveTo(points[0].x, points[0].y);
-        if (points.length == 1) {
-            if (drawPath)
-                drawPoint(affine, g2, points[0], pixelSize, Color.BLACK);
-            return null;
-        }
-        for (int i = 1; i < points.length; i += 3) {
-            if (i + 1 == points.length)
-                gPath.lineTo(points[i].x, points[i].y);
-            else if (i + 2 == points.length)
-                gPath.quadTo(points[i].x, points[i].y, points[i + 1].x,
-                        points[i + 1].y);
-            else
-                gPath.curveTo(points[i].x, points[i].y, points[i + 1].x,
-                        points[i + 1].y, points[i + 2].x, points[i + 2].y);
-        }
-        Color ptColor;
-        if (drawPath) {
-            drawPoint(affine, g2, points[0], pixelSize, Color.BLUE);
-            for (int i = 1; i < points.length; i += 3) {
-                if (i + 1 == points.length) {
-                    drawPoint(affine, g2, points[i], pixelSize, Color.CYAN);
-                } else if (i + 2 == points.length) {
-                    drawPoint(affine, g2, points[i], pixelSize, Color.CYAN);
-                    drawPoint(affine, g2, points[i + 1], pixelSize,
-                            Color.CYAN);
-                } else {
-                    for (int cntr = 0; cntr < 3; cntr++) {
-                        int ptCntr = i + cntr;
-                        if (cntr == 2)
-                            g2.setColor(Color.blue);
+import java.applet.*;
+import java.awt.geom.GeneralPath;
+import java.awt.image.BufferedImage;
+public class Main extends Applet
+{
+            Point[] controlPoints,curvePoints;
+            public void init(Point[] controlePoints)
+            {
+                        this.controlPoints = controlePoints;
+                        curvePoints=new Point[25];
+                        for(int i=0;i<curvePoints.length;i++)
+                                    curvePoints[i]=new Point(0,0);
+            }
+            public void SubDivide(Point p1,Point p2,double t)
+            {
+                double x1 = p1.getX();
+                double y1 = p1.getY();
+                        if(p1.getX()>p2.getX())
+                        {
+                                   x1 -=Math.abs(p1.getX()-p2.getX())*t;
+                                   p1.setPoint(x1, y1);
+                        }
                         else
-                            g2.setColor(Color.cyan);
-                        Point2D.Double affinePt = (Point2D.Double) affine
-                                .transform(points[ptCntr], null);
-                        g2.fill(new Ellipse2D.Double(affinePt.x - 4
-                                * pixelSize, affinePt.y - 4 * pixelSize,
-                                8 * pixelSize, 8 * pixelSize));
-                        // System.out.println("Drawing Point at PtCntr: "+ptCntr);
-                    }
-                }
-            } // for (int i = 1; i < points.length;  i += 3)
-        }
-        gPath = (GeneralPath) gPath.createTransformedShape(affine);
-        if (drawPath) {
-            g2.setColor(Color.DARK_GRAY);
-            Stroke origStroke = g2.getStroke();
-            g2.setStroke(new BasicStroke(0.5f));
-            g2.draw(gPath);
-            g2.setStroke(origStroke);
-            g2.transform(origAffine);
-        }
-        return gPath;
-    }
-
-    public static void drawPoint(Graphics2D g2, Point2D.Double pt,
-            int ptSize, Color color) {
-        AffineTransform affine = new AffineTransform();
-        affine.setToIdentity();
-        drawPoint(affine, g2, pt, ptSize, color);
-    }
-
-    public static void drawPoint(AffineTransform affine, Graphics2D g2,
-            Point2D.Double point, int ptSize, Color color) {
-        Point2D.Double pt = (Point2D.Double) affine.transform(point, null);
-        Color origColor = g2.getColor();
-        g2.setColor(color);
-        g2.fill(new Ellipse2D.Double(pt.x - 4 * ptSize, pt.y - 4 * ptSize,
-                8 * ptSize, 8 * ptSize));
-        g2.setColor(origColor);
-    }
+                        {
+                                    x1 +=Math.abs(p1.getX()-p2.getX())*t;
+                                    p1.setPoint(x1, y1);
+                        }
+                        if (p1.getY()>p2.getY())
+                        {
+                                    y1 -=Math.abs(p1.getY()-p2.getY())*t;
+                                    p1.setPoint(x1, y1);
+                        }
+                        else{
+                            y1 +=Math.abs(p1.getY()-p2.getY())*t;
+                             p1.setPoint(x1, y1);
+                        }
+                                    
+            }
+            public void Compute()
+            {
+                        Point[] tmp=new Point[controlPoints.length];
+                        for (int i=0; i<tmp.length; i++)
+                                    tmp[i] = new Point(0,0);
+                        for (int i=0; i<curvePoints.length; i++)
+                        {
+                                    double t = ((double) i)/(curvePoints.length-1);
+                                    for (int j=0; j<controlPoints.length; j++)
+                                                tmp[j]=new Point(controlPoints[j].getX(), controlPoints[j].getY());
+                                    int Depth = tmp.length;
+                                    while (Depth>1)
+                                    {
+                                                for (int j=0; j<Depth-1; j++)
+                                                            SubDivide(tmp[j], tmp[j+1], t);
+                                                Depth--;
+                                    }
+                                    curvePoints[i]=new Point(tmp[0].getX(), tmp[0].getY());
+                        }                      
+            }
+            public void Draw(Graphics2D g2d)
+            {
+                        g2d.setColor(Color.BLACK);
+                        for (int i=0; i<controlPoints.length-1; i++)
+                                    g2d.drawLine((int) controlPoints[i].getX(),(int) controlPoints[i].getY(),
+                                                            (int) controlPoints[i+1].getX(),(int) controlPoints[i+1].getY());
+                        GeneralPath path = new GeneralPath();                           // Bezier curve
+                        g2d.setColor(Color.RED);
+                        path.moveTo(curvePoints[0].getX(), curvePoints[0].getY());
+                        for (int i=1; i<curvePoints.length; i++)
+                                    path.lineTo(curvePoints[i].getX(), curvePoints[i].getY());
+                        g2d.draw(path);
+            }
+            public void paint(Graphics g)
+            {
+                        BufferedImage image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+                        Graphics2D g2d = image.createGraphics();
+                        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                        g2d.setColor(Color.WHITE);
+                        g2d.fillRect(0, 0, getWidth(), getHeight());
+                        Compute();
+                        Draw(g2d);
+                        g.drawImage(image, 0, 0, this);
+            }
 }

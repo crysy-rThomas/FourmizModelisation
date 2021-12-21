@@ -48,7 +48,7 @@ public class CalculeAffine implements CurveFunction {
 
         }
 
-        b = points.get(1).getY() - a * points.get(1).getY();
+            b = points.get(0).getY() - a * points.get(0).getX();
 
     }
 

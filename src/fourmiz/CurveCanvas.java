@@ -78,13 +78,13 @@ public class CurveCanvas extends JComponent {
         public void drawCurveAffine(){
          for (int i=0;i<function.size();i++) 
          {
-        double step = 0.1;
+        double step = 0.01;
         graphics.setColor( new Color( 255, 0, 255 ) );
         //oskour
         int oldX = xToPixel( function.get(i).getPoint().get(0).getX() );
         int oldY = yToPixel( function.get(i).getPoint().get(0).getY() );
         
-        for( double lx=function.get(i).getPoint().get(0).getX(); lx<= function.get(i).getPoint().get(1).getX()+step; lx+=step ) {
+        for( double lx=function.get(i).getPoint().get(0).getX(); lx<= function.get(i).getPoint().get(1).getX(); lx+=step ) {
             int x = xToPixel( lx );
             int y = yToPixel( function.get(i).compute(lx));
             graphics.drawLine( x, y, oldX, oldY );
@@ -103,7 +103,7 @@ public class CurveCanvas extends JComponent {
             int oldX = xToPixel(-echelle);
             int oldY = yToPixel(echelle);
 
-            for (double lx = -echelle; lx <= echelle + step; lx += step) {
+            for (double lx = -echelle; lx <= echelle; lx += step) {
                 int x = xToPixel(lx);
                 int y = yToPixel(pi.compute(lx));
                 graphics.drawLine(x, y, oldX, oldY);
@@ -115,9 +115,9 @@ public class CurveCanvas extends JComponent {
         
         // --- Draw curve Spline ---
         public void drawCurveSpline() {  
-            for(int i = 1; i<spline.getX().length;i++)
+             for(int i = 1; i<spline.getX().length;i++)
             {
-            double step = 0.1;
+            double step = 0.01;
             graphics.setColor(new Color(255, 0, 255));
             //oskour
             int oldX = xToPixel(spline.getX()[i]);
@@ -154,7 +154,7 @@ public class CurveCanvas extends JComponent {
             }
         } */   
             
-            
+            //oskur
           Main bezier = new Main();
           bezier.init();
           bezier.Compute();

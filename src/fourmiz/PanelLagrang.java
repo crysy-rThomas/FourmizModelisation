@@ -130,7 +130,7 @@ public class PanelLagrang extends javax.swing.JFrame {
         //trace
         PolynomeInterpolateur poly = new PolynomeInterpolateur(pts);
         curveCanvas.setFunction(poly);
-        this.dispose();
+        this.setVisible(false);
 
     }//GEN-LAST:event_jButton2ActionPerformed
 

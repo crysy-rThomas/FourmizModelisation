@@ -15,7 +15,7 @@ public class CurveCanvas extends JComponent {
     private PolynomeInterpolateur pi;
     private SplineInterpolateur spline;
     private Graphics2D graphics;
-    private final double echelle = 1000;
+    private final double echelle = 5;
     
         public double getEchelle()
     {
@@ -69,7 +69,7 @@ public class CurveCanvas extends JComponent {
         }
 
         
-       //-1 / -1.5 -- -1.5 / 0 -- 0 / 0.25 -- 0.5 / 0 -- 1 / 0
+       //-1 / -1.5 -- -0.5 / 0 -- 0 / 0.25 -- 0.5 / 0 -- 1 / 0
         
         
         
@@ -175,6 +175,8 @@ public class CurveCanvas extends JComponent {
     public void Clear()
     {
         function.clear();
+        this.pi = null;
+        this.spline = null;
         repaint();
     }
     public void setFunction(CalculeAffine ca)

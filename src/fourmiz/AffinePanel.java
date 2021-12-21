@@ -136,7 +136,7 @@ public class AffinePanel extends javax.swing.JFrame {
 
         CalculeAffine cal = new CalculeAffine(x1, y1, x2, y2);
         curveCanvas.setFunction(cal);
-        this.dispose();
+        this.setVisible(false);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

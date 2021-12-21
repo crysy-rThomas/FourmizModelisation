@@ -140,7 +140,7 @@ public class PanelSpline extends javax.swing.JFrame {
         SplineInterpolateur spline = new SplineInterpolateur(xTab, yTab);
         spline.interpolateSpline();
         curveCanvas.setFunction(spline);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

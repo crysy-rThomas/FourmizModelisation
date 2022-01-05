@@ -21,7 +21,6 @@ public class CalculeAffine implements CurveFunction {
     public ArrayList<Point> getPoint() {
         return points;
     }
-
     public double GetA() {
         return a;
     }
@@ -36,6 +35,7 @@ public class CalculeAffine implements CurveFunction {
 
         points.add(e1);
         points.add(e2);
+        calcule(); 
     }
 
     private void calcule() {
@@ -53,7 +53,7 @@ public class CalculeAffine implements CurveFunction {
     }
 
     public double compute(double x) {
-        calcule();
+        
         return a * x + b;
 
     }

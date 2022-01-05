@@ -14,6 +14,7 @@ public class CurveCanvas extends JComponent {
     private ArrayList <CalculeAffine> function ;
     private PolynomeInterpolateur pi;
     private SplineInterpolateur spline;
+    private BezierCourbe Bz;
     private Graphics2D graphics;
     private final double echelle = 5;
     
@@ -63,12 +64,15 @@ public class CurveCanvas extends JComponent {
             drawCurveLagrange();
         } else if (spline != null) {
             drawCurveSpline();
+        } else if (Bz != null) {
+            //dessine bezier
+            drawCurveBezier();
         } else {
             //Dessine les affines
             drawCurveAffine();
         }
 
-        
+
        //-1 / -1.5 -- -0.5 / 0 -- 0 / 0.25 -- 0.5 / 0 -- 1 / 0
         
         
@@ -135,30 +139,24 @@ public class CurveCanvas extends JComponent {
     }
         
                // --- Draw curve Bezier ---
-        public void drawCurveBezier() {  
-            /*for(int i = 1; i<spline.getX().length;i++)
-            {
-            double step = 0.1;
+        public void drawCurveBezier() {        
+            //oskur
+         double step = 0.1;
             graphics.setColor(new Color(255, 0, 255));
             //oskour
-            int oldX = xToPixel(spline.getX()[i]);
-            int oldY = yToPixel(spline.getY()[i]);          
-            //probleme de tracage echelle > intervalle du premier X-Y je pense qu'il faut tracer entre les intervalles
-            for (double lx = spline.getX()[i-1]; lx <= spline.getX()[i]; lx += step) {
+            int oldX = xToPixel(Bz.getPts().get(0).getX());
+            int oldY = yToPixel(Bz.getPts().get(0).getY());
+            
+            double l = Bz.getPts().get(1).getX() - Bz.getPts().get(0).getX();
+            
+            for (double lx = 0; lx <= l ; lx += step) {
                 int x = xToPixel(lx);
-                int y = yToPixel(spline.compute(lx));
+                int y = yToPixel(Bz.compute(lx).getY());
                 graphics.drawLine(x, y, oldX, oldY);
 
                 oldX = x;
                 oldY = y;
-            }
-        } */   
-            
-            //oskur
-          Main bezier = new Main();
-          bezier.init();
-          bezier.Compute();
-          bezier.Draw(graphics);
+            }  
             
             
             
@@ -177,6 +175,7 @@ public class CurveCanvas extends JComponent {
         function.clear();
         this.pi = null;
         this.spline = null;
+        this.Bz = null;
         repaint();
     }
     public void setFunction(CalculeAffine ca)
@@ -192,6 +191,11 @@ public class CurveCanvas extends JComponent {
     public void setFunction(SplineInterpolateur spline)
     {
         this.spline = spline;
+        repaint();
+    }
+        public void setFunction(BezierCourbe bz)
+    {
+        this.Bz = bz;
         repaint();
     }
     

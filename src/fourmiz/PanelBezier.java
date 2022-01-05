@@ -5,12 +5,15 @@
  */
 package fourmiz;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author crysy
  */
 public class PanelBezier extends javax.swing.JFrame {
      private static CurveCanvas curveCanvas;
+     private ArrayList<Point>pts = new ArrayList<>();
     /**
      * Creates new form PanelBezier
      */
@@ -112,7 +115,9 @@ public class PanelBezier extends javax.swing.JFrame {
         double x1 = Double.parseDouble(jTextField1.getText());
         double y1 = Double.parseDouble(jTextField2.getText());
         //add
-      
+        Point pt = new Point(x1,y1);
+   
+        pts.add(pt);
 
         jTextField1.setText("");
         jTextField2.setText("");
@@ -121,7 +126,9 @@ public class PanelBezier extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         //trace
-        curveCanvas.drawCurveBezier();
+      
+        BezierCourbe bz = new BezierCourbe(pts);
+        curveCanvas.setFunction(bz);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

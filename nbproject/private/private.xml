@@ -4,16 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/AffinePanel.java</file>
-            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/PolynomeInterpolateur.java</file>
             <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/PanelLagrang.java</file>
             <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/CurveTracer.java</file>
             <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/Point.java</file>
-            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/CurveCanvas.java</file>
             <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/Main.java</file>
-            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/PanelBezier.java</file>
-            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/SplineInterpolateur.java</file>
             <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/PanelSpline.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/BezierCourbe.java</file>
             <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/CurveFunction.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/PolynomeInterpolateur.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/CurveCanvas.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/PanelBezier.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/CalculeAffine.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/SplineInterpolateur.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,5 +1,9 @@
 package fourmiz;
 
+import fourmiz.METIER.SplineInterpolateur;
+import fourmiz.METIER.PolynomeInterpolateur;
+import fourmiz.METIER.CalculeAffine;
+import fourmiz.METIER.BezierCourbe;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;

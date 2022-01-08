@@ -10,5 +10,10 @@ package fourmiz.METIER;
  * @author crysy
  */
 public interface CurveFunction {
+    /**
+     * Calcule des differentes fonctions f(x)
+     * @param x valeur de l'inconnue
+     * @return resultat de f(x)
+     */
     public double compute( double x ); 
 }

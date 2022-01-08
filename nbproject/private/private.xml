@@ -3,19 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/AffinePanel.java</file>
-            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/PanelLagrang.java</file>
-            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/CurveTracer.java</file>
-            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/Point.java</file>
-            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/Main.java</file>
-            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/PanelSpline.java</file>
-            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/BezierCourbe.java</file>
-            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/CurveFunction.java</file>
-            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/PolynomeInterpolateur.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/IHM/PanelLagrang.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/IHM/AffinePanel.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/METIER/Point.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/METIER/CurveFunction.java</file>
             <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/CurveCanvas.java</file>
-            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/PanelBezier.java</file>
-            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/CalculeAffine.java</file>
-            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/SplineInterpolateur.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/METIER/PolynomeInterpolateur.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/IHM/PanelBezier.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/METIER/CalculeAffine.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/METIER/SplineInterpolateur.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/IHM/CurveTracer.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/IHM/PanelSpline.java</file>
+            <file>file:/C:/Users/crysy/OneDrive/Documents/GitHub/FourmizModelisation/src/fourmiz/METIER/BezierCourbe.java</file>
         </group>
     </open-files>
 </project-private>

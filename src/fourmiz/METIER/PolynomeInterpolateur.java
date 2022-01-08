@@ -17,13 +17,16 @@ import java.util.ArrayList;
 public class PolynomeInterpolateur implements CurveFunction {
 
     private ArrayList<Point> points;
-    
+    /**
+     * Constructeur d'un PolynomeInterpolateur
+     * @param points Liste des differents Points
+     */
     public PolynomeInterpolateur(ArrayList<Point> points) {
         this.points = points;
     }
     
     private double lagrange(int i, double x) {
-        double res = 1;
+        double res = 1; //calcule de lagrange
         for(int j=0;j<points.size();j++) {
             if(j!= i) {
                 res *= (x-points.get(j).getX())/(points.get(i).getX()-points.get(j).getX());
@@ -31,7 +34,11 @@ public class PolynomeInterpolateur implements CurveFunction {
         }
         return res;
     }
-    
+    /**
+     * Resultat du PolynomeInterpolateur
+     * @param x Inconnue (Valeur du X sur le graphique)
+     * @return f(x) res avec l'inconnue
+     */
     @Override
     public double compute(double x) {
         double res = 0;

@@ -13,23 +13,37 @@ public class Point {
     
     private double x;
     private double y;
-    
+    /**
+     * 
+     * @return la valeur de X
+     */
     public double getX()
     {
         return x;
     }
-    
+     /**
+     * 
+     * @return la valeur de Y
+     */
     public double getY()
     {
         return y;
     }
-    
+    /**
+     * Construteur d'un point
+     * @param x
+     * @param y 
+     */
     public Point(double x, double y)
     {
         this.x = x;
         this.y = y;
     }
-    
+    /**
+     * Modifier le x et y d'un point
+     * @param x
+     * @param y 
+     */
     public void setPoint(double x, double y)
     {
         this.x = x;

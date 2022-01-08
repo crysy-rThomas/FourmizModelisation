@@ -15,20 +15,28 @@ public class BezierCourbe {
     private ArrayList<Point> pts = new ArrayList<>();
     private ArrayList<CalculeAffine> ca = new ArrayList<>();
     
-    
+/**
+ * 
+ * @return La liste des points
+ */
     public ArrayList<Point> getPts()
     {
         return pts;
     }
-    
-    
+
+    /**
+     * 
+     * @param pts 
+     */
     public BezierCourbe(ArrayList<Point> pts)
     {
         this.pts = pts;
         defAffine();
     }
     
-    // definition de tt les affines contenues dans la courbe
+    /**
+     * definition de tt les affines contenues dans la courbe
+     **/ 
     private void defAffine()
     {
         for(int i = 0; i<pts.size()-1;i++) {            
@@ -37,6 +45,11 @@ public class BezierCourbe {
         }
     }
     
+    /**
+     * Calcule les coordonnee de la courbe
+     * @param x la valeur de x sur le graphique
+     * @return Le point de debut de la courbe
+     */
     public Point compute(double x)
     {
         ArrayList<Point> ptsBezier = new ArrayList<>();

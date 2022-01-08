@@ -76,7 +76,7 @@ public class CurveCanvas extends JComponent {
             drawCurveAffine();
         }
 
-
+        //points du sujet
        //-1 / -1.5 -- -0.5 / 0 -- 0 / 0.25 -- 0.5 / 0 -- 1 / 0
         
         
@@ -103,7 +103,7 @@ public class CurveCanvas extends JComponent {
        }
       }
         
-                // --- Draw curve Lagrange ---
+         // --- Draw curve Lagrange ---
         public void drawCurveLagrange() {       
             double step = 0.1;
             graphics.setColor(new Color(255, 0, 255));
@@ -142,9 +142,9 @@ public class CurveCanvas extends JComponent {
         }    
     }
         
-               // --- Draw curve Bezier ---
+             // --- Draw curve Bezier ---
         public void drawCurveBezier() {        
-            //oskur
+         
          double step = 0.1;
             graphics.setColor(new Color(255, 0, 255));
             //oskour
@@ -152,7 +152,7 @@ public class CurveCanvas extends JComponent {
             int oldY = yToPixel(Bz.getPts().get(0).getY());
             
             double l = Bz.getPts().get(1).getX() - Bz.getPts().get(0).getX();
-            
+            //probleme avec le compute surment une erreur de comprehention
             for (double lx = 0; lx <= l ; lx += step) {
                 int x = xToPixel(lx);
                 int y = yToPixel(Bz.compute(lx).getY());
@@ -165,7 +165,7 @@ public class CurveCanvas extends JComponent {
             
             
     }
-
+        
     private int xToPixel( double x ) {
         return (int)( getWidth() * (x + echelle)/(2*echelle) );
     }
@@ -173,7 +173,9 @@ public class CurveCanvas extends JComponent {
     private int yToPixel( double y ) {
         return (int)( getHeight() * (1 - (y+(echelle/2.0))/echelle) );
     }
-    
+/**
+ * Efface tout les dessins
+ */
     public void Clear()
     {
         function.clear();
@@ -182,22 +184,38 @@ public class CurveCanvas extends JComponent {
         this.Bz = null;
         repaint();
     }
+    /**
+     * Definie une Fonction Affine
+     * @param ca la fonction calcule d'une afine
+     */
     public void setFunction(CalculeAffine ca)
     {
         this.function.add(ca);
         repaint();
     }
+    /**
+     * Definie une Fonction Lagrange
+     * @param pi le polynome calcule
+     */
     public void setFunction(PolynomeInterpolateur pi)
     {
         this.pi = pi;
         repaint();
     }
+    /**
+     * Definie une Fonction Spline
+     * @param spline calcule
+     */
     public void setFunction(SplineInterpolateur spline)
     {
         this.spline = spline;
         repaint();
     }
-        public void setFunction(BezierCourbe bz)
+    /**
+     * Definie une Fonction Bezier
+     * @param bz Bezier calcule
+     */
+    public void setFunction(BezierCourbe bz)
     {
         this.Bz = bz;
         repaint();
